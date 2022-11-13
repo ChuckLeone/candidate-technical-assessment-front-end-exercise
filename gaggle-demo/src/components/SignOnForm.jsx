@@ -1,5 +1,5 @@
 import React from "react";
-import { redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import {
   Button,
@@ -10,7 +10,6 @@ import {
   InputLabel,
   FormHelperText,
   OutlinedInput,
-  TextField,
 } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
@@ -26,6 +25,8 @@ const SignOnForm = () => {
     usernameErrorMessage: "",
     passwordErrorMessage: "",
   });
+
+  let navigate = useNavigate();
 
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
@@ -86,9 +87,8 @@ const SignOnForm = () => {
     if (values.password !== "foo") {
       handlePasswordError("Incorrect password, try again!");
     } else if (values.username === "chuck" && values.password === "foo") {
-      //redirectUser();
       console.log("auth successful, redirecting user...");
-      return redirect(`/incidents/`);
+      navigate("/incidents");
     }
   };
 

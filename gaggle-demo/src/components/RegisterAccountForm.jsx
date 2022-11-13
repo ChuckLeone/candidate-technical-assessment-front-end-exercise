@@ -108,7 +108,7 @@ const RegisterAccountForm = (props) => {
           <Button
             variant="contained"
             color="primary"
-            onClick={(registerAccount, props.handleClose)}
+            onClick={props.registerAccount}
             disabled={!validate()}
           >
             Register Account

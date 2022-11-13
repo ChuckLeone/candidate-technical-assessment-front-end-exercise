@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import SignOnForm from "../components/SignOnForm";
-import RegisterAcoountForm from "../components/RegisterAccountForm";
+import RegisterAccountForm from "../components/RegisterAccountForm";
 import { Box, Container, Dialog, Grid, Snackbar } from "@mui/material";
 import MuiAlert from "@mui/material/Alert";
 import GaggleLogo from "../assets/logo--Gaggle.svg";
@@ -19,12 +19,17 @@ const SignOnPage = (register) => {
     setOpen(true);
   };
 
-  const handleClose = () => {
+  const registerAccount = () => {
     setOpen(false);
+    console.log("hey");
     setOpenAlert(true);
     setTimeout(() => {
       setOpenAlert(false);
     }, "4000");
+  };
+
+  const handleClose = () => {
+    setOpen(false);
   };
 
   return (
@@ -86,10 +91,17 @@ const SignOnPage = (register) => {
         </Grid>
       </Container>
       <Dialog open={open} onClose={handleClose}>
-        <RegisterAcoountForm handleClose={handleClose} />
+        <RegisterAccountForm
+          handleClose={handleClose}
+          registerAccount={registerAccount}
+        />
       </Dialog>
 
-      <Snackbar open={openAlert} autoHideDuration={6000} onClose={handleClose}>
+      <Snackbar
+        open={openAlert}
+        autoHideDuration={6000}
+        onClose={registerAccount}
+      >
         <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
           New account registration complete! You may now sign on with your new
           acoount.
