@@ -4,6 +4,8 @@ import Box from "@mui/material/Box";
 import {
   Button,
   Checkbox,
+  DialogContent,
+  DialogActions,
   FormControl,
   IconButton,
   InputAdornment,
@@ -15,42 +17,17 @@ import {
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
-const RegisterAccountForm = () => {
+const RegisterAccountForm = (props) => {
   const [values, setValues] = React.useState({
     username: "",
     password: "",
+    email: "",
     showPassword: false,
-    disableSignOn: true,
-    usernameError: false,
-    passwordError: false,
-    usernameErrorMessage: "",
-    passwordErrorMessage: "",
+    disableRegister: true,
   });
 
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
-    if (values.usernameError) {
-      resetUsernameError();
-    }
-    if (values.passwordError) {
-      resetPasswordError();
-    }
-  };
-
-  const resetUsernameError = () => {
-    setValues({
-      ...values,
-      usernameErrorMessage: "",
-      usernameError: false,
-    });
-  };
-
-  const resetPasswordError = () => {
-    setValues({
-      ...values,
-      passwordErrorMessage: "",
-      passwordError: false,
-    });
   };
 
   const handleClickShowPassword = () => {
@@ -60,47 +37,26 @@ const RegisterAccountForm = () => {
     });
   };
 
-  const handleUsernameError = (props) => {
-    setValues({
-      ...values,
-      usernameErrorMessage: props,
-      usernameError: true,
-    });
-  };
-
-  const handlePasswordError = (props) => {
-    setValues({
-      ...values,
-      passwordErrorMessage: props,
-      passwordError: true,
-    });
-  };
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
 
-  const logIn = () => {
-    if (values.username !== "chuck") {
-      handleUsernameError("Incorrect username, try again!");
-    }
-    if (values.password !== "foo") {
-      handlePasswordError("Incorrect password, try again!");
-    } else if (values.username === "chuck" && values.password === "foo") {
-      //redirectUser();
-      console.log("auth successful, redirecting user...");
-      return redirect(`/incidents/`);
-    }
+  const registerAccount = () => {
+    console.log("auth successful, redirecting user...");
+    return redirect(`/incidents/`);
   };
 
   const validate = () => {
-    return values.username.length && values.password.length;
+    return (
+      values.username.length && values.password.length && values.email.length
+    );
   };
 
   return (
     <>
-      <Box sx={{ width: 350, padding: "20px" }}>
+      <Box sx={{ width: 450, padding: "20px" }}>
         <Typography>New Account</Typography>
-        <div>
+        <DialogContent>
           <FormControl sx={{ m: 1, width: "25ch" }}>
             <InputLabel htmlFor="username">Username</InputLabel>
             <OutlinedInput
@@ -111,7 +67,6 @@ const RegisterAccountForm = () => {
               onChange={handleChange("username")}
               error={values.usernameError}
             />
-            <FormHelperText>{values.usernameErrorMessage}</FormHelperText>
           </FormControl>
 
           <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
@@ -136,24 +91,29 @@ const RegisterAccountForm = () => {
                 </InputAdornment>
               }
             />
-            <FormHelperText id="outlined-weight-helper-text">
-              {values.passwordErrorMessage}
-            </FormHelperText>
-            <div style={{ textAlign: "left" }}>
-              <Checkbox /> Remember
-            </div>
           </FormControl>
-        </div>
-        <div>
+          <FormControl sx={{ m: 1, width: "25ch" }}>
+            <InputLabel htmlFor="username">Email</InputLabel>
+            <OutlinedInput
+              id="email"
+              label="Email"
+              variant="outlined"
+              value={values.email}
+              onChange={handleChange("email")}
+            />
+          </FormControl>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={props.handleClose}>Cancel</Button>
           <Button
             variant="contained"
             color="primary"
-            onClick={logIn}
+            onClick={(registerAccount, props.handleClose)}
             disabled={!validate()}
           >
-            Sign On
+            Register Account
           </Button>
-        </div>
+        </DialogActions>
       </Box>
     </>
   );

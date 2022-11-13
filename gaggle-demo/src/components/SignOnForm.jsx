@@ -98,9 +98,15 @@ const SignOnForm = () => {
 
   return (
     <>
-      <Box sx={{ width: 350, padding: "20px" }}>
+      <Box
+        sx={{
+          flexWrap: "wrap",
+          justifyContent: "center",
+          width: 450,
+        }}
+      >
         <div>
-          <FormControl sx={{ m: 1, width: "25ch" }}>
+          <FormControl sx={{ m: 1, width: "90%" }}>
             <InputLabel htmlFor="username">Username</InputLabel>
             <OutlinedInput
               id="username"
@@ -113,7 +119,7 @@ const SignOnForm = () => {
             <FormHelperText>{values.usernameErrorMessage}</FormHelperText>
           </FormControl>
 
-          <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
+          <FormControl sx={{ m: 1, width: "90%" }} variant="outlined">
             <InputLabel htmlFor="password">Password</InputLabel>
             <OutlinedInput
               id="password"
@@ -143,7 +149,7 @@ const SignOnForm = () => {
             </div>
           </FormControl>
         </div>
-        <div>
+        <div style={{ textAlign: "center" }}>
           <Button
             variant="contained"
             color="primary"
