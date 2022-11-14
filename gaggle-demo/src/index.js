@@ -3,8 +3,8 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
 import Root from "./routes/root";
 import Error from "./routes/error";
-import Incidents from "./routes/incidents";
-import ForgotPassword from "./routes/forgot-password";
+import IncidentsPage from "./pages/IncidentsPage";
+import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -15,11 +15,11 @@ const router = createBrowserRouter([
   },
   {
     path: "incidents/",
-    element: <Incidents />,
+    element: <IncidentsPage />,
   },
   {
     path: "forgot-password/",
-    element: <ForgotPassword />,
+    element: <ForgotPasswordPage />,
   },
 ]);
 

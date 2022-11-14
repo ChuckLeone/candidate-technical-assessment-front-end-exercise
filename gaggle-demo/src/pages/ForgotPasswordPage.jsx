@@ -1,40 +1,36 @@
 import React from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import SignOnForm from "../components/SignOnForm";
-import RegisterAccountForm from "../components/RegisterAccountForm";
-import { Box, Container, Dialog, Grid, Snackbar } from "@mui/material";
-import MuiAlert from "@mui/material/Alert";
+import {
+  Box,
+  Button,
+  Container,
+  FormControl,
+  Grid,
+  InputLabel,
+  OutlinedInput,
+  Typography,
+} from "@mui/material";
 import GaggleLogo from "../assets/logo--Gaggle.svg";
 import Hero from "../assets/hero-image.png";
 
-const Alert = React.forwardRef(function Alert(props, ref) {
-  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-});
-
-const SignOnPage = (register) => {
-  const [open, setOpen] = React.useState(false);
-  const [openAlert, setOpenAlert] = React.useState(false);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+const ForgotPasswordPage = () => {
+  const [values, setValues] = React.useState({
+    email: "",
+  });
 
   const navigate = useNavigate();
 
-  const registerAccount = () => {
-    setOpen(false);
-    console.log("hey");
-    setOpenAlert(true);
-    setTimeout(() => {
-      setOpenAlert(false);
-      navigate("/incidents");
-    }, "4000");
+  const handleChange = (prop) => (event) => {
+    setValues({ ...values, [prop]: event.target.value });
   };
 
-  const handleClose = () => {
-    setOpen(false);
+  const validate = () => {
+    return values.email.length;
   };
 
+  const handleForgotPassword = () => {
+    navigate("/");
+  };
   return (
     <>
       <Container>
@@ -49,7 +45,31 @@ const SignOnPage = (register) => {
               <img src={GaggleLogo} height="40" />
             </div>
             <div>
-              <SignOnForm />
+              <Typography component="h2" variant="h4">
+                Forgot Password
+              </Typography>
+              <Typography variant="body1">
+                Enter the email you used to register your account to send a
+                password hint
+              </Typography>
+              <FormControl sx={{ m: 2, width: "90%" }}>
+                <InputLabel htmlFor="username">Email</InputLabel>
+                <OutlinedInput
+                  id="email"
+                  label="Email"
+                  variant="outlined"
+                  value={values.email}
+                  onChange={handleChange("email")}
+                />
+              </FormControl>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={handleForgotPassword}
+                disabled={!validate()}
+              >
+                Reset Password
+              </Button>
             </div>
             <div style={{ position: "absolute", bottom: 0 }}>
               <Box
@@ -59,9 +79,7 @@ const SignOnPage = (register) => {
                   justifyContent: "center",
                 }}
               >
-                <Link style={{ margin: "16px" }} onClick={handleClickOpen}>
-                  Register
-                </Link>
+                <Link style={{ margin: "16px" }}>Register</Link>
                 <span style={{ margin: "16px" }}>|</span>
                 <Link style={{ margin: "16px" }} to={`/forgot-password`}>
                   Forgot Password?
@@ -93,25 +111,8 @@ const SignOnPage = (register) => {
           </Grid>
         </Grid>
       </Container>
-      <Dialog open={open} onClose={handleClose}>
-        <RegisterAccountForm
-          handleClose={handleClose}
-          registerAccount={registerAccount}
-        />
-      </Dialog>
-
-      <Snackbar
-        open={openAlert}
-        autoHideDuration={6000}
-        onClose={registerAccount}
-      >
-        <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
-          New account registration complete! You will be logged in and
-          redirected to the main page.
-        </Alert>
-      </Snackbar>
     </>
   );
 };
 
-export default SignOnPage;
+export default ForgotPasswordPage;

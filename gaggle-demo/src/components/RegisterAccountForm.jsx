@@ -1,7 +1,7 @@
 import React from "react";
 import { redirect } from "react-router-dom";
-import Box from "@mui/material/Box";
 import {
+  Box,
   Button,
   Checkbox,
   DialogContent,
@@ -54,10 +54,10 @@ const RegisterAccountForm = (props) => {
 
   return (
     <>
-      <Box sx={{ width: 450, padding: "20px" }}>
+      <Box sx={{ width: 500, padding: "16px" }}>
         <Typography>New Account</Typography>
         <DialogContent>
-          <FormControl sx={{ m: 1, width: "25ch" }}>
+          <FormControl sx={{ m: 2, width: "90%" }}>
             <InputLabel htmlFor="username">Username</InputLabel>
             <OutlinedInput
               id="username"
@@ -69,7 +69,7 @@ const RegisterAccountForm = (props) => {
             />
           </FormControl>
 
-          <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
+          <FormControl sx={{ m: 2, width: "90%" }} variant="outlined">
             <InputLabel htmlFor="password">Password</InputLabel>
             <OutlinedInput
               id="password"
@@ -92,7 +92,7 @@ const RegisterAccountForm = (props) => {
               }
             />
           </FormControl>
-          <FormControl sx={{ m: 1, width: "25ch" }}>
+          <FormControl sx={{ m: 2, width: "90%" }}>
             <InputLabel htmlFor="username">Email</InputLabel>
             <OutlinedInput
               id="email"
