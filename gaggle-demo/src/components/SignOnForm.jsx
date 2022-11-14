@@ -1,29 +1,30 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import Box from "@mui/material/Box";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import Box from '@mui/material/Box';
 import {
   Button,
   Checkbox,
   FormControl,
+  FormControlLabel,
   IconButton,
   InputAdornment,
   InputLabel,
   FormHelperText,
   OutlinedInput,
-} from "@mui/material";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
+} from '@mui/material';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 const SignOnForm = () => {
   const [values, setValues] = React.useState({
-    username: "",
-    password: "",
+    username: '',
+    password: '',
     showPassword: false,
     disableSignOn: true,
     usernameError: false,
     passwordError: false,
-    usernameErrorMessage: "",
-    passwordErrorMessage: "",
+    usernameErrorMessage: '',
+    passwordErrorMessage: '',
   });
 
   let navigate = useNavigate();
@@ -41,7 +42,7 @@ const SignOnForm = () => {
   const resetUsernameError = () => {
     setValues({
       ...values,
-      usernameErrorMessage: "",
+      usernameErrorMessage: '',
       usernameError: false,
     });
   };
@@ -49,7 +50,7 @@ const SignOnForm = () => {
   const resetPasswordError = () => {
     setValues({
       ...values,
-      passwordErrorMessage: "",
+      passwordErrorMessage: '',
       passwordError: false,
     });
   };
@@ -81,14 +82,14 @@ const SignOnForm = () => {
   };
 
   const logIn = () => {
-    if (values.username !== "chuck") {
-      handleUsernameError("Incorrect username, try again!");
+    if (values.username !== 'chuck') {
+      handleUsernameError('Incorrect username, try again!');
     }
-    if (values.password !== "foo") {
-      handlePasswordError("Incorrect password, try again!");
-    } else if (values.username === "chuck" && values.password === "foo") {
-      console.log("auth successful, redirecting user...");
-      navigate("/incidents");
+    if (values.password !== 'foo') {
+      handlePasswordError('Incorrect password, try again!');
+    } else if (values.username === 'chuck' && values.password === 'foo') {
+      console.log('auth successful, redirecting user...');
+      navigate('/incidents');
     }
   };
 
@@ -100,33 +101,38 @@ const SignOnForm = () => {
     <>
       <Box
         sx={{
-          flexWrap: "wrap",
-          justifyContent: "center",
+          flexWrap: 'wrap',
+          justifyContent: 'center',
           width: 450,
         }}
       >
         <div>
-          <FormControl sx={{ m: 1, width: "90%" }}>
+          <FormControl sx={{ m: 1, width: '90%' }}>
             <InputLabel htmlFor="username">Username</InputLabel>
             <OutlinedInput
               id="username"
               label="Username"
               variant="outlined"
               value={values.username}
-              onChange={handleChange("username")}
+              onChange={handleChange('username')}
               error={values.usernameError}
             />
-            <FormHelperText>{values.usernameErrorMessage}</FormHelperText>
+            <FormHelperText
+              sx={{ color: 'red', fontStyle: 'italic' }}
+              id="username-helper-text"
+            >
+              {values.usernameErrorMessage}
+            </FormHelperText>
           </FormControl>
 
-          <FormControl sx={{ m: 1, width: "90%" }} variant="outlined">
+          <FormControl sx={{ m: 1, width: '90%' }} variant="outlined">
             <InputLabel htmlFor="password">Password</InputLabel>
             <OutlinedInput
               id="password"
               label="Password"
-              type={values.showPassword ? "text" : "password"}
+              type={values.showPassword ? 'text' : 'password'}
               value={values.password}
-              onChange={handleChange("password")}
+              onChange={handleChange('password')}
               error={values.passwordError}
               endAdornment={
                 <InputAdornment position="end">
@@ -141,15 +147,18 @@ const SignOnForm = () => {
                 </InputAdornment>
               }
             />
-            <FormHelperText id="outlined-weight-helper-text">
+            <FormHelperText
+              sx={{ color: 'red', fontStyle: 'italic' }}
+              id="password-helper-text"
+            >
               {values.passwordErrorMessage}
             </FormHelperText>
-            <div style={{ textAlign: "left" }}>
-              <Checkbox /> Remember
+            <div style={{ textAlign: 'left' }}>
+              <FormControlLabel control={<Checkbox />} label="Remember" />
             </div>
           </FormControl>
         </div>
-        <div style={{ textAlign: "center" }}>
+        <div style={{ textAlign: 'center' }}>
           <Button
             variant="contained"
             color="primary"
