@@ -1,27 +1,24 @@
-import React from "react";
-import { redirect } from "react-router-dom";
+import React from 'react';
 import {
   Box,
   Button,
-  Checkbox,
   DialogContent,
   DialogActions,
   FormControl,
   IconButton,
   InputAdornment,
   InputLabel,
-  FormHelperText,
   OutlinedInput,
   Typography,
-} from "@mui/material";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
+} from '@mui/material';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 const RegisterAccountForm = (props) => {
   const [values, setValues] = React.useState({
-    username: "",
-    password: "",
-    email: "",
+    username: '',
+    password: '',
+    email: '',
     showPassword: false,
     disableRegister: true,
   });
@@ -41,11 +38,6 @@ const RegisterAccountForm = (props) => {
     event.preventDefault();
   };
 
-  const registerAccount = () => {
-    console.log("auth successful, redirecting user...");
-    return redirect(`/incidents/`);
-  };
-
   const validate = () => {
     return (
       values.username.length && values.password.length && values.email.length
@@ -54,29 +46,31 @@ const RegisterAccountForm = (props) => {
 
   return (
     <>
-      <Box sx={{ width: 500, padding: "16px" }}>
-        <Typography>New Account</Typography>
+      <Box sx={{ width: 500, padding: '16px' }}>
+        <Typography component="h3" variant="h5">
+          New Account
+        </Typography>
         <DialogContent>
-          <FormControl sx={{ m: 2, width: "90%" }}>
+          <FormControl sx={{ m: 2, width: '90%' }}>
             <InputLabel htmlFor="username">Username</InputLabel>
             <OutlinedInput
               id="username"
               label="Username"
               variant="outlined"
               value={values.username}
-              onChange={handleChange("username")}
+              onChange={handleChange('username')}
               error={values.usernameError}
             />
           </FormControl>
 
-          <FormControl sx={{ m: 2, width: "90%" }} variant="outlined">
+          <FormControl sx={{ m: 2, width: '90%' }} variant="outlined">
             <InputLabel htmlFor="password">Password</InputLabel>
             <OutlinedInput
               id="password"
               label="Password"
-              type={values.showPassword ? "text" : "password"}
+              type={values.showPassword ? 'text' : 'password'}
               value={values.password}
-              onChange={handleChange("password")}
+              onChange={handleChange('password')}
               error={values.passwordError}
               endAdornment={
                 <InputAdornment position="end">
@@ -92,14 +86,14 @@ const RegisterAccountForm = (props) => {
               }
             />
           </FormControl>
-          <FormControl sx={{ m: 2, width: "90%" }}>
+          <FormControl sx={{ m: 2, width: '90%' }}>
             <InputLabel htmlFor="username">Email</InputLabel>
             <OutlinedInput
               id="email"
               label="Email"
               variant="outlined"
               value={values.email}
-              onChange={handleChange("email")}
+              onChange={handleChange('email')}
             />
           </FormControl>
         </DialogContent>

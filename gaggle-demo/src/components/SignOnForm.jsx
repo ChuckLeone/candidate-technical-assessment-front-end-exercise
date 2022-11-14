@@ -11,6 +11,7 @@ import {
   InputLabel,
   FormHelperText,
   OutlinedInput,
+  Typography,
 } from '@mui/material';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
@@ -107,7 +108,10 @@ const SignOnForm = () => {
         }}
       >
         <div>
-          <FormControl sx={{ m: 1, width: '90%' }}>
+          <Typography component="h2" variant="h4">
+            Sign On
+          </Typography>
+          <FormControl sx={{ m: 1, width: '100%' }}>
             <InputLabel htmlFor="username">Username</InputLabel>
             <OutlinedInput
               id="username"
@@ -125,7 +129,7 @@ const SignOnForm = () => {
             </FormHelperText>
           </FormControl>
 
-          <FormControl sx={{ m: 1, width: '90%' }} variant="outlined">
+          <FormControl sx={{ m: 1, width: '100%' }} variant="outlined">
             <InputLabel htmlFor="password">Password</InputLabel>
             <OutlinedInput
               id="password"
@@ -158,7 +162,7 @@ const SignOnForm = () => {
             </div>
           </FormControl>
         </div>
-        <div style={{ textAlign: 'center' }}>
+        <div style={{ textAlign: 'right' }}>
           <Button
             variant="contained"
             color="primary"
