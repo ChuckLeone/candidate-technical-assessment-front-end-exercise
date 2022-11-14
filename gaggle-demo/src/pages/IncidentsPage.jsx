@@ -90,11 +90,13 @@ const IncidentsPage = () => {
                 <StyledToolbar>
                   <IconButton>
                     <AppsIcon />
-                    <img
-                      src={GaggleLogo}
-                      height="40"
-                      style={{ marginLeft: "16px" }}
-                    />
+                    <a href="/">
+                      <img
+                        src={GaggleLogo}
+                        height="40"
+                        style={{ marginLeft: "16px" }}
+                      />
+                    </a>
                   </IconButton>
                   <Box sx={{ flexGrow: 1 }} />
 

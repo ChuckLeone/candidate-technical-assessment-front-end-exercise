@@ -42,7 +42,13 @@ const ForgotPasswordPage = () => {
         >
           <Grid item sm={6} style={{ backgroundColor: "white" }}>
             <div style={{ position: "absolute", top: 0, marginTop: "20px" }}>
-              <img src={GaggleLogo} height="40" />
+              <a href="/">
+                <img
+                  src={GaggleLogo}
+                  height="40"
+                  style={{ marginLeft: "16px" }}
+                />
+              </a>
             </div>
             <div>
               <Typography component="h2" variant="h4">
