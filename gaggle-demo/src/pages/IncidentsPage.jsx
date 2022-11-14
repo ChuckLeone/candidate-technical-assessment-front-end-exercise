@@ -90,15 +90,20 @@ const IncidentsPage = () => {
                 <StyledToolbar>
                   <IconButton>
                     <AppsIcon />
-                    <a href="/">
-                      <span className="sr-only">Link back to main page</span>
-                      <img
-                        src={GaggleLogo}
-                        height="40"
-                        style={{ marginLeft: '16px' }}
-                        alt="gaggle logo linking back to main page"
-                      />
-                    </a>
+                    <header>
+                      <a href="/">
+                        <span className="sr-only">Link back to main page</span>
+                        <img
+                          src={GaggleLogo}
+                          height="40"
+                          style={{ marginLeft: '16px' }}
+                          alt="gaggle logo linking back to main page"
+                        />
+                      </a>
+                      <Typography component="h1" className="sr-only">
+                        Gaggle
+                      </Typography>
+                    </header>
                   </IconButton>
                   <Box sx={{ flexGrow: 1 }} />
 
@@ -128,70 +133,76 @@ const IncidentsPage = () => {
                     </div>
                   </Box>
                 </StyledToolbar>
-
-                <Box
-                  style={{ margin: '16px', padding: '8px' }}
-                  sx={{ display: { xs: 'none', md: 'flex' } }}
-                >
-                  <Button
-                    variant="contained"
-                    style={{
-                      backgroundColor: 'white',
-                      color: '#333333',
-                      marginRight: '16px',
-                    }}
-                    startIcon={<SearchIcon />}
+                <nav>
+                  <Box
+                    style={{ margin: '16px', padding: '8px' }}
+                    sx={{ display: { xs: 'none', md: 'flex' } }}
                   >
-                    Button 1
-                  </Button>
-                  <Button
-                    variant="contained"
-                    style={{
-                      backgroundColor: 'white',
-                      color: '#333333',
-                      marginRight: '16px',
-                    }}
-                    startIcon={<CloudSyncIcon />}
-                  >
-                    Button 2
-                  </Button>
-                  <Button
-                    variant="contained"
-                    style={{ backgroundColor: 'white', color: '#333333' }}
-                    startIcon={<ReceiptLongIcon />}
-                  >
-                    Button 3
-                  </Button>
-                  <Box sx={{ flexGrow: 1 }} />
-                  <Search>
-                    <SearchIconWrapper>
-                      <FilterAltIcon />
-                    </SearchIconWrapper>
-                    <StyledInputBase
-                      placeholder="Find - filter by keyword"
-                      inputProps={{ 'aria-label': 'search' }}
-                    />
-                  </Search>
-                  <Button
-                    variant="contained"
-                    style={{
-                      backgroundColor: 'white',
-                      color: '#333333',
-                      marginLeft: '16px',
-                      marginRight: '16px',
-                    }}
-                    startIcon={<FileDownloadIcon />}
-                  >
-                    Export
-                  </Button>
-                </Box>
+                    <Button
+                      variant="contained"
+                      style={{
+                        backgroundColor: 'white',
+                        color: '#333333',
+                        marginRight: '16px',
+                      }}
+                      startIcon={<SearchIcon />}
+                    >
+                      Button 1
+                    </Button>
+                    <Button
+                      variant="contained"
+                      style={{
+                        backgroundColor: 'white',
+                        color: '#333333',
+                        marginRight: '16px',
+                      }}
+                      startIcon={<CloudSyncIcon />}
+                    >
+                      Button 2
+                    </Button>
+                    <Button
+                      variant="contained"
+                      style={{ backgroundColor: 'white', color: '#333333' }}
+                      startIcon={<ReceiptLongIcon />}
+                    >
+                      Button 3
+                    </Button>
+                    <Box sx={{ flexGrow: 1 }} />
+                    <Search>
+                      <SearchIconWrapper>
+                        <FilterAltIcon />
+                      </SearchIconWrapper>
+                      <StyledInputBase
+                        placeholder="Find - filter by keyword"
+                        inputProps={{ 'aria-label': 'search' }}
+                      />
+                    </Search>
+                    <Button
+                      variant="contained"
+                      style={{
+                        backgroundColor: 'white',
+                        color: '#333333',
+                        marginLeft: '16px',
+                        marginRight: '16px',
+                      }}
+                      startIcon={<FileDownloadIcon />}
+                    >
+                      Export
+                    </Button>
+                  </Box>
+                </nav>
               </AppBar>
             </Box>
           </Grid>
           <Grid item sm={12}>
-            <div style={{ width: '100%', marginTop: '170px' }}>
-              <IncidentTable />
-            </div>
+            <main>
+              <div style={{ width: '100%', marginTop: '170px' }}>
+                <IncidentTable />
+              </div>
+            </main>
+          </Grid>
+          <Grid item sm={12}>
+            <footer />
           </Grid>
         </Grid>
       </Container>

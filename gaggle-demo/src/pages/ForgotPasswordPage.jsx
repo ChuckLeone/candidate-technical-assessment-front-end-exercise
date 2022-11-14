@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   Box,
   Button,
@@ -75,6 +75,11 @@ const ForgotPasswordPage = () => {
                           alt="gaggle logo linking back to main page"
                         />
                       </a>
+                      <header>
+                        <Typography component="h1" className="sr-only">
+                          Gaggle
+                        </Typography>
+                      </header>
                     </Grid>
                     <Grid
                       item
@@ -86,57 +91,80 @@ const ForgotPasswordPage = () => {
                         height: '80vh',
                       }}
                     >
-                      <Box
-                        sx={{
-                          flexWrap: 'wrap',
-                          justifyContent: 'center',
-                          width: 500,
-                        }}
-                      >
-                        <Grid container>
-                          <Grid item lg={12}>
-                            <Typography component="h2" variant="h4">
-                              Forgot Password
-                            </Typography>
+                      <main>
+                        <Box
+                          sx={{
+                            flexWrap: 'wrap',
+                            justifyContent: 'center',
+                            width: 500,
+                          }}
+                        >
+                          <Grid container>
+                            <Grid item lg={12}>
+                              <Typography component="h2" variant="h4">
+                                Forgot Password
+                              </Typography>
+                            </Grid>
+                            <Grid item lg={12}>
+                              <Typography variant="body1">
+                                Enter the email you used to register your
+                                account to send a password hint
+                              </Typography>
+                            </Grid>
+                            <Grid item lg={12}>
+                              <FormControl
+                                sx={{ m: 2, width: '100%', marginLeft: 0 }}
+                              >
+                                <InputLabel htmlFor="email">Email</InputLabel>
+                                <OutlinedInput
+                                  id="email"
+                                  label="Email"
+                                  variant="outlined"
+                                  value={values.email}
+                                  onChange={handleChange('email')}
+                                />
+                              </FormControl>
+                            </Grid>
+                            <Grid item lg={12} style={{ textAlign: 'right' }}>
+                              <Button
+                                variant="contained"
+                                color="primary"
+                                onClick={handleForgotPassword}
+                                disabled={!validate()}
+                              >
+                                Reset Password
+                              </Button>
+                            </Grid>
                           </Grid>
-                          <Grid item lg={12}>
-                            <Typography variant="body1">
-                              Enter the email you used to register your account
-                              to send a password hint
-                            </Typography>
-                          </Grid>
-                          <Grid item lg={12}>
-                            <FormControl
-                              sx={{ m: 2, width: '100%', marginLeft: 0 }}
-                            >
-                              <InputLabel htmlFor="email">Email</InputLabel>
-                              <OutlinedInput
-                                id="email"
-                                label="Email"
-                                variant="outlined"
-                                value={values.email}
-                                onChange={handleChange('email')}
-                              />
-                            </FormControl>
-                          </Grid>
-                          <Grid item lg={12} style={{ textAlign: 'right' }}>
-                            <Button
-                              variant="contained"
-                              color="primary"
-                              onClick={handleForgotPassword}
-                              disabled={!validate()}
-                            >
-                              Reset Password
-                            </Button>
-                          </Grid>
-                        </Grid>
-                      </Box>
+                        </Box>
+                      </main>
                     </Grid>
                     <Grid
                       item
                       lg={12}
                       style={{ position: 'absolute', bottom: 0 }}
-                    ></Grid>
+                    >
+                      <footer>
+                        <Box
+                          sx={{
+                            padding: '20px',
+                            display: 'flex',
+                            justifyContent: 'center',
+                          }}
+                        >
+                          <Link style={{ margin: '16px' }} to="/">
+                            Register
+                          </Link>
+                          <span style={{ margin: '16px' }}>|</span>
+                          <Link
+                            style={{ margin: '16px' }}
+                            to={`/forgot-password`}
+                          >
+                            Forgot Password?
+                          </Link>
+                        </Box>
+                      </footer>
+                    </Grid>
                   </Grid>
                 </Container>
               </div>

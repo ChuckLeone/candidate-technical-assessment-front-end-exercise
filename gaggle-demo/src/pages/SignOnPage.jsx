@@ -2,7 +2,14 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import SignOnForm from '../components/SignOnForm';
 import RegisterAccountForm from '../components/RegisterAccountForm';
-import { Box, Container, Dialog, Grid, Snackbar } from '@mui/material';
+import {
+  Box,
+  Container,
+  Dialog,
+  Grid,
+  Snackbar,
+  Typography,
+} from '@mui/material';
 import MuiAlert from '@mui/material/Alert';
 import GaggleLogo from '../assets/logo--Gaggle.svg';
 import Hero from '../assets/hero-image.png';
@@ -71,6 +78,11 @@ const SignOnPage = (register) => {
                       }}
                     >
                       <img src={GaggleLogo} height="40" alt="Gaggle logo" />
+                      <header>
+                        <Typography component="h1" className="sr-only">
+                          Gaggle
+                        </Typography>
+                      </header>
                     </Grid>
                     <Grid
                       item
@@ -82,34 +94,38 @@ const SignOnPage = (register) => {
                         height: '80vh',
                       }}
                     >
-                      <SignOnForm style={{ width: '10em' }} />
+                      <main>
+                        <SignOnForm style={{ width: '10em' }} />
+                      </main>
                     </Grid>
                     <Grid
                       item
                       lg={12}
                       style={{ position: 'absolute', bottom: 0 }}
                     >
-                      <Box
-                        sx={{
-                          padding: '20px',
-                          display: 'flex',
-                          justifyContent: 'center',
-                        }}
-                      >
-                        <Link
-                          style={{ margin: '16px' }}
-                          onClick={handleClickOpen}
+                      <footer>
+                        <Box
+                          sx={{
+                            padding: '20px',
+                            display: 'flex',
+                            justifyContent: 'center',
+                          }}
                         >
-                          Register
-                        </Link>
-                        <span style={{ margin: '16px' }}>|</span>
-                        <Link
-                          style={{ margin: '16px' }}
-                          to={`/forgot-password`}
-                        >
-                          Forgot Password?
-                        </Link>
-                      </Box>
+                          <Link
+                            style={{ margin: '16px' }}
+                            onClick={handleClickOpen}
+                          >
+                            Register
+                          </Link>
+                          <span style={{ margin: '16px' }}>|</span>
+                          <Link
+                            style={{ margin: '16px' }}
+                            to={`/forgot-password`}
+                          >
+                            Forgot Password?
+                          </Link>
+                        </Box>
+                      </footer>
                     </Grid>
                   </Grid>
                 </Container>
