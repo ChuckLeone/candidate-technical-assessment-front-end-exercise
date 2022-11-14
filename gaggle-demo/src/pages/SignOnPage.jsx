@@ -1,11 +1,11 @@
-import React from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
-import SignOnForm from "../components/SignOnForm";
-import RegisterAccountForm from "../components/RegisterAccountForm";
-import { Box, Container, Dialog, Grid, Snackbar } from "@mui/material";
-import MuiAlert from "@mui/material/Alert";
-import GaggleLogo from "../assets/logo--Gaggle.svg";
-import Hero from "../assets/hero-image.png";
+import React from 'react';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+import SignOnForm from '../components/SignOnForm';
+import RegisterAccountForm from '../components/RegisterAccountForm';
+import { Box, Container, Dialog, Grid, Snackbar } from '@mui/material';
+import MuiAlert from '@mui/material/Alert';
+import GaggleLogo from '../assets/logo--Gaggle.svg';
+import Hero from '../assets/hero-image.png';
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -23,12 +23,12 @@ const SignOnPage = (register) => {
 
   const registerAccount = () => {
     setOpen(false);
-    console.log("hey");
+    console.log('hey');
     setOpenAlert(true);
     setTimeout(() => {
       setOpenAlert(false);
-      navigate("/incidents");
-    }, "4000");
+      navigate('/incidents');
+    }, '4000');
   };
 
   const handleClose = () => {
@@ -37,79 +37,118 @@ const SignOnPage = (register) => {
 
   return (
     <>
-      <Container>
-        <Grid
-          container
-          direction="row"
-          justifyContent="center"
-          alignItems="center"
-        >
-          <Grid item sm={6} style={{ backgroundColor: "white" }}>
-            <div style={{ position: "absolute", top: 0, marginTop: "20px" }}>
-              <img src={GaggleLogo} height="40" />
-            </div>
-            <div>
-              <SignOnForm />
-            </div>
-            <div style={{ position: "absolute", bottom: 0 }}>
-              <Box
-                sx={{
-                  padding: "20px",
-                  display: "flex",
-                  justifyContent: "center",
+      <div
+        style={{
+          backgroundImage: `url(${Hero})`,
+          backgroundRepeat: 'no-repeat',
+          minHeight: '100vh',
+          width: '100%',
+          backgroundColor: '#000',
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
+        }}
+      >
+        <div style={{ backgroundColor: 'rgba(0,0,0,0.5' }}>
+          <Grid container justifyContent="center" alignItems="center">
+            <Grid item sm={6}>
+              <div
+                style={{
+                  backgroundColor: 'white',
+                  minHeight: '100vh',
+                  width: '100%',
                 }}
               >
-                <Link style={{ margin: "16px" }} onClick={handleClickOpen}>
-                  Register
-                </Link>
-                <span style={{ margin: "16px" }}>|</span>
-                <Link style={{ margin: "16px" }} to={`/forgot-password`}>
-                  Forgot Password?
-                </Link>
-              </Box>
-            </div>
+                <Container>
+                  <Grid container>
+                    <Grid
+                      item
+                      lg={12}
+                      style={{
+                        position: 'absolute',
+                        top: 0,
+                        marginTop: '20px',
+                        height: '20vh',
+                      }}
+                    >
+                      <img src={GaggleLogo} height="40" alt="Gaggle logo" />
+                    </Grid>
+                    <Grid
+                      item
+                      lg={12}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        height: '80vh',
+                      }}
+                    >
+                      <SignOnForm style={{ width: '10em' }} />
+                    </Grid>
+                    <Grid
+                      item
+                      lg={12}
+                      style={{ position: 'absolute', bottom: 0 }}
+                    >
+                      <Box
+                        sx={{
+                          padding: '20px',
+                          display: 'flex',
+                          justifyContent: 'center',
+                        }}
+                      >
+                        <Link
+                          style={{ margin: '16px' }}
+                          onClick={handleClickOpen}
+                        >
+                          Register
+                        </Link>
+                        <span style={{ margin: '16px' }}>|</span>
+                        <Link
+                          style={{ margin: '16px' }}
+                          to={`/forgot-password`}
+                        >
+                          Forgot Password?
+                        </Link>
+                      </Box>
+                    </Grid>
+                  </Grid>
+                </Container>
+              </div>
+            </Grid>
+            <Grid item sm={6}>
+              <div
+                style={{
+                  color: 'black',
+                  minHeight: '100vh',
+                  width: '100%',
+                }}
+              ></div>
+            </Grid>
           </Grid>
-          <Grid
-            item
-            sm={6}
-            style={{
-              backgroundImage: `url(${Hero})`,
-              backgroundRepeat: "no-repeat",
-              minHeight: "100vh",
-              width: "100%",
-              backgroundColor: "#000",
-              backgroundPosition: "center",
-              backgroundSize: "cover",
-            }}
-          >
-            <div
-              style={{
-                backgroundColor: "rgba(0,0,0,0.5",
-                color: "black",
-                minHeight: "100vh",
-                width: "100%",
-              }}
-            ></div>
-          </Grid>
-        </Grid>
-      </Container>
-      <Dialog open={open} onClose={handleClose}>
-        <RegisterAccountForm
-          handleClose={handleClose}
-          registerAccount={registerAccount}
-        />
-      </Dialog>
 
-      <Snackbar
-        open={openAlert}
-        autoHideDuration={6000}
-        onClose={registerAccount}
-      >
-        <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
-          New account registration complete! You will be logged in and
-          redirected to the main page.
-        </Alert>
-      </Snackbar>
+          <Dialog open={open} onClose={handleClose}>
+            <RegisterAccountForm
+              handleClose={handleClose}
+              registerAccount={registerAccount}
+            />
+          </Dialog>
+
+          <Snackbar
+            open={openAlert}
+            autoHideDuration={6000}
+            onClose={registerAccount}
+          >
+            <Alert
+              onClose={handleClose}
+              severity="success"
+              sx={{ width: '100%' }}
+            >
+              New account registration complete! You will be logged in and
+              redirected to the main page.
+            </Alert>
+          </Snackbar>
+        </div>
+      </div>
     </>
   );
 };

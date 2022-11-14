@@ -2,8 +2,13 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Built wit ReactJS + material-ui + icons-material
+Built with ReactJS + Material UI (@mui/material, @mui/icons-material, @mui/x-data-grid)
+
 Uses react-router-dom for routing
+
+## Installation
+
+- in root of GAGGLE-DEMO folder run `npm i`
 
 ## Available Scripts
 
