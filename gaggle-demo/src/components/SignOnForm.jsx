@@ -157,10 +157,10 @@ const SignOnForm = () => {
             >
               {values.passwordErrorMessage}
             </FormHelperText>
-            <div style={{ textAlign: 'left' }}>
-              <FormControlLabel control={<Checkbox />} label="Remember" />
-            </div>
           </FormControl>
+          <div style={{ textAlign: 'left', paddingLeft: '8px' }}>
+            <FormControlLabel control={<Checkbox />} label="Remember" />
+          </div>
         </div>
         <div style={{ textAlign: 'right' }}>
           <Button
