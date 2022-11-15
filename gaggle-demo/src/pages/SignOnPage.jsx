@@ -77,8 +77,8 @@ const SignOnPage = (register) => {
                         height: '20vh',
                       }}
                     >
-                      <img src={GaggleLogo} height="40" alt="Gaggle logo" />
                       <header>
+                        <img src={GaggleLogo} height="40" alt="Gaggle logo" />
                         <Typography component="h1" className="sr-only">
                           Gaggle
                         </Typography>
@@ -101,7 +101,7 @@ const SignOnPage = (register) => {
                     <Grid
                       item
                       lg={12}
-                      style={{ position: 'absolute', bottom: 0 }}
+                      style={{ alignItems: 'center', justifyContent: 'center' }}
                     >
                       <footer>
                         <Box
@@ -112,14 +112,24 @@ const SignOnPage = (register) => {
                           }}
                         >
                           <Link
-                            style={{ margin: '16px' }}
+                            style={{
+                              margin: '16px',
+                              fontWeight: '600',
+                              color: '#263A91',
+                              textDecoration: 'none',
+                            }}
                             onClick={handleClickOpen}
                           >
                             Register
                           </Link>
                           <span style={{ margin: '16px' }}>|</span>
                           <Link
-                            style={{ margin: '16px' }}
+                            style={{
+                              margin: '16px',
+                              fontWeight: '600',
+                              color: '#263A91',
+                              textDecoration: 'none',
+                            }}
                             to={`/forgot-password`}
                           >
                             Forgot Password?
